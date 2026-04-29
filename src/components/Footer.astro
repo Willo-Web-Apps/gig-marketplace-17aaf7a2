@@ -1,11 +1,47 @@
 ---
 const year = new Date().getFullYear();
 ---
-<footer class="border-t border-surface-200 py-10 mt-auto">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <p class="text-sm font-semibold text-surface-900 font-display">Your New Business</p>
-      <p class="text-sm text-surface-800/50">&copy; {year} Your New Business. All rights reserved.</p>
+<footer class="bg-surface-900 border-t border-white/10 py-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <a href="/" class="font-display text-xl text-white flex items-center gap-2 mb-3">
+          <span class="inline-block w-7 h-7 rounded-md bg-brand-500 flex items-center justify-center text-surface-950 text-sm leading-none">T</span>
+          Tasq
+        </a>
+        <p class="font-body text-sm text-white/40 leading-relaxed max-w-xs">
+          The peer-to-peer task marketplace that puts workers first. 5% fee. Full transparency. Always.
+        </p>
+        <p class="mt-4 font-body text-xs text-brand-500/80 font-600 uppercase tracking-widest">More pay. Less platform.</p>
+      </div>
+
+      <!-- Links 1 -->
+      <div>
+        <p class="font-body text-xs font-700 uppercase tracking-widest text-white/30 mb-4">Platform</p>
+        <ul class="space-y-3">
+          <li><a href="#how-it-works" class="font-body text-sm text-white/50 hover:text-white transition-colors">How it works</a></li>
+          <li><a href="#why-tasq" class="font-body text-sm text-white/50 hover:text-white transition-colors">Why Tasq</a></li>
+          <li><a href="/blog" class="font-body text-sm text-white/50 hover:text-white transition-colors">Blog</a></li>
+          <li><a href="#join" class="font-body text-sm text-white/50 hover:text-white transition-colors">Join</a></li>
+        </ul>
+      </div>
+
+      <!-- Links 2 -->
+      <div>
+        <p class="font-body text-xs font-700 uppercase tracking-widest text-white/30 mb-4">Legal</p>
+        <ul class="space-y-3">
+          <li><a href="#" class="font-body text-sm text-white/50 hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="font-body text-sm text-white/50 hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="#" class="font-body text-sm text-white/50 hover:text-white transition-colors">Worker Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-8 border-t border-white/8 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <p class="font-body text-sm text-white/25">&copy; {year} Tasq. All rights reserved.</p>
+      <p class="font-body text-xs text-white/20">Built for the workers who build everything else.</p>
     </div>
   </div>
 </footer>

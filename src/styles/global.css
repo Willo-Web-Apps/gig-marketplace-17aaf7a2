@@ -1,62 +1,89 @@
-/* GOOGLE FONTS — Add @import url("https://fonts.googleapis.com/css2?...")
-   lines HERE, ABOVE @import "tailwindcss". CSS spec: every @import must
-   appear before any other rule (incl. @theme, @keyframes). A misplaced
-   @import will fail the build (`@import rules must precede all rules`). */
+/* GOOGLE FONTS — must be ABOVE @import "tailwindcss" */
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:wght@400;500;600;700&display=swap");
+
 @import "tailwindcss";
 
 /* -----------------------------------------------------------------------
-   Design Tokens — customize these to change the entire site's look.
-   The Product Agent should edit this @theme block to match the business:
-   - Swap fonts (add Google Fonts @import at the very TOP of this file,
-     then update --font-display / --font-body below)
-   - Change brand colors to match the business personality
-   - Flip surface colors for dark theme (swap light/dark values)
+   Design Tokens — Tasq
+   Bold-energetic, warm amber/off-black, workers-first energy
    ----------------------------------------------------------------------- */
 
 @theme {
-  /* Typography — replace with distinctive Google Fonts for the business */
-  --font-display: ui-sans-serif, system-ui, sans-serif;
-  --font-body: ui-sans-serif, system-ui, sans-serif;
+  /* Typography */
+  --font-display: 'Archivo Black', sans-serif;
+  --font-body: 'Barlow', sans-serif;
 
-  /* Brand color scale — agent should customize per business */
-  --color-brand-50: oklch(0.97 0.01 250);
-  --color-brand-100: oklch(0.93 0.02 250);
-  --color-brand-200: oklch(0.87 0.04 250);
-  --color-brand-400: oklch(0.70 0.12 250);
-  --color-brand-500: oklch(0.60 0.16 250);
-  --color-brand-600: oklch(0.50 0.16 250);
+  /* Brand — warm amber scale */
+  --color-brand-50:  oklch(0.98 0.015 80);
+  --color-brand-100: oklch(0.95 0.04  78);
+  --color-brand-200: oklch(0.90 0.08  76);
+  --color-brand-400: oklch(0.82 0.14  74);
+  --color-brand-500: oklch(0.75 0.16  75);   /* #F59E0B primary amber */
+  --color-brand-600: oklch(0.65 0.16  72);
 
-  /* Surface colors — light theme defaults. Flip for dark theme:
-     surface-50 becomes near-black, surface-900 becomes near-white */
-  --color-surface-50: oklch(0.985 0.002 250);
-  --color-surface-100: oklch(0.96 0.004 250);
-  --color-surface-200: oklch(0.92 0.006 250);
-  --color-surface-800: oklch(0.30 0.015 250);
-  --color-surface-900: oklch(0.20 0.015 250);
-  --color-surface-950: oklch(0.14 0.012 250);
+  /* Surface — warm cream, light theme */
+  --color-surface-50:  oklch(0.99 0.012 88);   /* warm cream #FFFBF2 */
+  --color-surface-100: oklch(0.97 0.018 85);
+  --color-surface-200: oklch(0.93 0.022 82);
+  --color-surface-800: oklch(0.28 0.020 75);
+  --color-surface-900: oklch(0.18 0.015 260);  /* near-black #111827 */
+  --color-surface-950: oklch(0.11 0.025 75);   /* near-black warm #1A1208 */
 }
 
-/* Page-load animations — CSS only, no JS required */
+/* -----------------------------------------------------------------------
+   Animations
+   ----------------------------------------------------------------------- */
 @keyframes fadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out both;
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-slide-up {
-  animation: slideUp 0.6s ease-out both;
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
 }
 
-/* Staggered animation delays for cascading reveals */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
+.animate-fade-in  { animation: fadeIn  0.6s ease-out both; }
+.animate-slide-up { animation: slideUp 0.6s ease-out both; }
+.animate-count-up { animation: countUp 0.8s ease-out both; }
+
+.delay-100 { animation-delay: 0.10s; }
+.delay-200 { animation-delay: 0.20s; }
+.delay-300 { animation-delay: 0.30s; }
+.delay-400 { animation-delay: 0.40s; }
+.delay-500 { animation-delay: 0.50s; }
+.delay-600 { animation-delay: 0.60s; }
+
+/* -----------------------------------------------------------------------
+   Hero noise overlay
+   ----------------------------------------------------------------------- */
+.hero-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* -----------------------------------------------------------------------
+   Comparison table helpers
+   ----------------------------------------------------------------------- */
+.check-amber {
+  color: oklch(0.75 0.16 75);
+}
+.check-muted {
+  color: oklch(0.55 0.01 260);
+}
